@@ -67,13 +67,32 @@ app.post('/api/persons', (req, res) => {
         })
     }
 
-    const person = {
+    if (!body.name) {
+        return res.status(400).json({
+            error: 'name is missing'
+        })
+    }
+
+    if (!body.number) {
+        return res.status(400).json({
+            error: 'number is missing'
+        })
+    }
+
+
+    const personToAdd = {
         "id": generateId(),
         "name": body.name,
         "number": body.number
     }
 
-    persons = persons.concat(person)
+    if (persons.find(p => p.name === personToAdd.name)) {
+        return res.status(400).json({
+            error: 'name must be unique'
+        })
+    }
+
+    persons = persons.concat(personToAdd)
 
     res.status(200).end()
 })

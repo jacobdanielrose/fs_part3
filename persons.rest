@@ -9,3 +9,13 @@ content-type: application/json
     "name": "Hingle McCringleberry",
     "number": "69-666-420"
 }
+
+###
+
+POST http://localhost:3001/api/persons HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Arto Hellas",
+    "number": "69-666-420"
+}
