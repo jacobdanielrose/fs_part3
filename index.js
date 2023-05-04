@@ -103,7 +103,7 @@ app.post('/api/persons', (req, res) => {
     res.status(200).end()
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || "8080";
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
 })
